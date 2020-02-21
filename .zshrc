@@ -1,20 +1,16 @@
-toilet -f future -F border:gay  "⇝ Gasacchi ⇜" 
+toilet -f future -F border:rainbow  "⇝ Gasacchi ⇜" 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# alias for neovim
-alias v='nvim'
-# alias for lsd
-alias ls='lsd -a'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-
+# Unalias
+#
+# Aliases
+alias v=nvim
+alias ls='lsd'
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -25,8 +21,7 @@ export ZSH="/home/gasacchi/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true # Show prefix before first line in prompt
-ZSH_THEME="spaceship-prompt/spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -87,61 +82,21 @@ ZSH_THEME="spaceship-prompt/spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	zsh-completions
+  git
+  zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
 autoload -U compinit && compinit # reload completions for zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
-# Colorize autosuggest
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+# Add Rust to $PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 
-#
-# Spaceship-prompt
-#
-
-# Spaceship-prompt customization
-SPACESHIP_PROMPT_ORDER=(
-dir             # Current directory section
-user            # Username section
-host            # Hostname section
-git             # Git section (git_branch + git_status)
-time          # Time stampts section
-# hg            # Mercurial section (hg_branch  + hg_status)
-# package       # Package version
-# node          # Node.js section
-# ruby          # Ruby section
-# elixir        # Elixir section
-# xcode         # Xcode section
-# swift         # Swift section
-# golang        # Go section
-# php           # PHP section
-# rust          # Rust section
-# haskell       # Haskell Stack section
-# julia         # Julia section
-# docker        # Docker section
-# aws           # Amazon Web Services section
-# venv          # virtualenv section
-# conda         # conda virtualenv section
-# pyenv         # Pyenv section
-# dotnet        # .NET section
-# ember         # Ember.js section
-# kubecontext   # Kubectl context section
-exec_time       # Execution time
-line_sep        # Line break
-battery         # Battery level and status
-vi_mode         # Vi-mode indicator
-jobs            # Background jobs indicator
-# exit_code     # Exit code section
-char            # Prompt character
-)
-
-SPACESHIP_DIR_PREFIX="%{$fg[blue]%}┌─[%b "
-SPACESHIP_DIR_SUFFIX="%{$fg[blue]%} ] "
-SPACESHIP_CHAR_SYMBOL="%{$fg[blue]%}└─▪%b "
+# Add yarn Instaed package to path
+export PATH="$HOME/.yarn/bin:$PATH"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -170,5 +125,3 @@ SPACESHIP_CHAR_SYMBOL="%{$fg[blue]%}└─▪%b "
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
