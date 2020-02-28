@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+subs=$(curl "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCWhNuNBV41B1pWNn94XarEA&key=AIzaSyClBcBZdlgsalk7N6M3wMnEz4ocky8PDUo" | jq '.items[0].statistics.subscriberCount')
+vid=$(curl "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCWhNuNBV41B1pWNn94XarEA&key=AIzaSyClBcBZdlgsalk7N6M3wMnEz4ocky8PDUo" | jq '.items[0].statistics.videoCount')
+view=$(curl "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCWhNuNBV41B1pWNn94XarEA&key=AIzaSyClBcBZdlgsalk7N6M3wMnEz4ocky8PDUo" | jq '.items[0].statistics.viewCount')
+#subs_count=($subs * 1)
+#vid_count=($vid * 1)
+#view_count=($view * 1)
+echo " 辶: $vid |  : $view |  : $subs"
+

@@ -1,0 +1,64 @@
+# ----------------------------
+# Gasacchi i3Blocks Config
+# ---------------------------
+# AIzaSyClBcBZdlgsalk7N6M3wMnEz4ocky8PDUo
+[Gasacchi]
+command=echo "  Gasacchi"
+interval=once
+color=#35BF5C
+
+[youtube]
+command=~/.config/i3blocks/blocklets/youtube
+interval=60
+label= 
+color=#fb4934
+
+[temperature]
+command=~/.config/i3blocks/blocklets/temperature
+label= 
+interval=10
+color=#b16286
+
+[cpu_usage2]
+command=~/.config/i3blocks/blocklets/cpu_usage2
+markup=pango
+LABEL= 
+interval=persist
+color=#689d6a
+
+[disk]
+command=~/.config/i3blocks/blocklets/disk -f "   {free} {funit}iB / {total} {tunit}iB ({pused}%)" -tc '{pfree}' '<' 20 -tc '{pfree}' '<' 10
+instance=/
+interval=30
+markup=pango
+color=#458588
+
+[memory]
+command=~/.config/i3blocks/blocklets/memory
+label= 
+interval=30
+color=#98971a
+
+[bandwidth]
+command=~/.config/i3blocks/blocklets/bandwidth2 
+label= 
+interval=persist
+markup=pango
+color=#cc241d
+
+[battery2]
+command=~/.config/i3blocks/blocklets/battery2
+markup=pango
+label= 
+interval=30
+color=#d79921
+
+
+[time]
+command=~/.config/i3blocks/blocklets/time
+interval=1
+color=#928374
+#TZ_FILE=~/.tz
+STRFTIME_FORMAT=  %Y-%m-%d %H:%M
+TZONES=$DEFAULT_TZ,Brazil/East,Australia/Brisbane,Asia/Calcutta
+TZ_LABELS=,Brazil,AU,Hyderabad

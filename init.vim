@@ -9,10 +9,11 @@
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-
 " Fix backspace indent
 set backspace=indent,eol,start
 
+" Fix split to bottom and right
+set splitbelow splitright
 " Tabs
 set tabstop=2
 set softtabstop=0
@@ -21,7 +22,7 @@ set expandtab
 " -- elm tabs --
 autocmd Filetype elm setlocal ts=4 sw=4 sts=0 expandtab
 " Set Shell
-set shell=/usr/bin/zsh
+set shell=/usr/bin/bash
 
 " Enable hidden buffer
 set hidden
@@ -34,10 +35,11 @@ set smartcase
 
 " Visual Settings
 set showcmd
-set nowrap
+" set nowrap
 set noshowmode
 set showmatch
 set cursorline
+set cursorcolumn
 syntax on
 set ruler
 set number
@@ -74,7 +76,25 @@ nnoremap <Leader><space> :nohlsearch<CR>
 noremap <Leader>w :w<CR>
 
 " Save and exit with leader
-noremap <Leader>e :wq<CR>
+noremap <Leader>e cwq<CR>
+
+" Move between split faster
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Show highlight group
+nmap <Leader>pp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists('*synstack')
+    return
+  endif
+  echo map(synstack(line('.'), col('.') ),'synIDattr(v:val, "name")')
+endfunc
+
+" reapply colorscheme 
+nmap <Leader>po :colorscheme hentai<CR>
 "================================
 " MAPPING END
 "================================
@@ -99,6 +119,14 @@ Plug 'ianks/vim-tsx'
 " Plugin for elm
 Plug 'ElmCast/elm-vim'
 
+" Plugin for fish shell
+Plug 'dag/vim-fish'
+
+" Plugin for i3 config syntax
+Plug 'mboughaba/i3config.vim'
+
+" Plugin for toml syntax
+Plug 'cespare/vim-toml'
 " Surrounding text
 Plug 'tpope/vim-surround'
 
@@ -118,8 +146,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Plugin for fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash'  }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+
+" Plugin for auto align
+Plug 'junegunn/vim-easy-align'
 
 " Plug for auto pair
 Plug 'jiangmiao/auto-pairs'
@@ -127,20 +158,18 @@ Plug 'jiangmiao/auto-pairs'
 " Plugin for git manage
 Plug 'tpope/vim-fugitive'
 
-" Plugin for multiple cursor
-Plug 'terryma/vim-multiple-cursors'
-
 " Plugin for status line
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
 " Theme
-Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'arcticicestudio/nord-vim'
+
 
 " Plugin for rainbox parenthesis 
 Plug 'kien/rainbow_parentheses.vim'
-
 
 " end vim-plug
 call plug#end()
@@ -154,9 +183,23 @@ call plug#end()
 " CUSTOM CONFIGURATION
 " ==============================
 
+" i3 config 
+aug i3config_ft_detection
+  au!
+  au BufNewFile,BufRead ~/.i3/config set filetype=i3config
+aug end
+
+" Auto Align Config
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Reload vim configuration
-map <Leader>rc :source ~/.config/nvim/init.vim<CR>
+map <Leader>rr :source ~/.config/nvim/init.vim<CR>
+
+" Use Prettier
+map <Leader>p :PrettierAsync<CR>
 
 " Support true color
 if exists('+termguicolors')
@@ -166,7 +209,7 @@ if exists('+termguicolors')
 endif
 
 " theme
-colorscheme dracula
+colorscheme gruvbox
 
 " Transparent
 hi Normal guibg=NONE ctermbg=NONE
@@ -174,7 +217,7 @@ hi Normal guibg=NONE ctermbg=NONE
 " enable lightline
 set laststatus=2
 let g:lightline = {
-\   'colorscheme':'dracula',
+\   'colorscheme':'gruvbox',
 \   'active': {
 \     'left':[[ 'mode', 'paste' ],
 \             [ 'gitbranch', 'readonly', 'filename', 'modified' ]]
@@ -187,10 +230,10 @@ let g:lightline = {
 \   }
 \}
 let g:lightline.separator = {
-\   'left': '', 'right': ''
+\   'left': "\ue0b4", 'right': "\ue0b6"
 \}
 let g:lightline.subseparator = {
-\   'left': '', 'right': ''
+\   'left': "\ue0b5", 'right': "\ue0b7"
 \}
 let g:lightline.tabline = {
 \   'left': [['buffers']],
@@ -215,17 +258,21 @@ let g:lightline#bufferline#shorten_path = 1
 let g:lightline#bufferline#show_number = 0
 
 " vim startify setup
-let g:startify_custom_header =
-              \ startify#pad(split(system('toilet -f future -F border " >_ Gasacchi   "') ,'\n'))
-map <F1> :Startify<CR>
+"let g:startify_custom_header =
+"              \ startify#pad(split(system('toilet ">_ Gasacchi"') ,'\n'))
+map <Leader>ss :Startify<CR>
 
 "nerdtree config
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>nn :NERDTreeToggle<CR>
+
+" ElmCast config
+let g:elm_setup_keybindings = 0
 
 " fzf config
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 
+" Coc Config
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
