@@ -49,56 +49,6 @@ set relativenumber
 " Vim basic config END
 " ==============================
 
-"================================
-" MAPPING
-"================================
-" Disabling arrow key and live with it >.<
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-"
-" Map Leader to ,
-let mapleader=','
-
-" Remap Esc to jk
-inoremap jk <ESC>
-
-" turn off search highlight
-nnoremap <Leader><space> :nohlsearch<CR>
-
-" Save file with leader key
-noremap <Leader>w :w<CR>
-
-" Save and exit with leader
-noremap <Leader>e cwq<CR>
-
-" Move between split faster
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-" Show highlight group
-nmap <Leader>pp :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists('*synstack')
-    return
-  endif
-  echo map(synstack(line('.'), col('.') ),'synIDattr(v:val, "name")')
-endfunc
-
-" reapply colorscheme 
-nmap <Leader>po :colorscheme hentai<CR>
-"================================
-" MAPPING END
-"================================
-
 " ===============================
 " vim plug
 " ===============================
@@ -119,7 +69,10 @@ Plug 'ianks/vim-tsx'
 " Plugin for elm
 Plug 'ElmCast/elm-vim'
 
-" Plugin for fish shell
+" Plugin for RUST
+Plug 'rust-lang/rust.vim'
+
+" Plugin for fish shell syntax
 Plug 'dag/vim-fish'
 
 " Plugin for i3 config syntax
@@ -127,11 +80,15 @@ Plug 'mboughaba/i3config.vim'
 
 " Plugin for toml syntax
 Plug 'cespare/vim-toml'
+
 " Surrounding text
 Plug 'tpope/vim-surround'
 
 " Repeat Vim 
 " Plug 'tpope/vim-repeat'
+
+" Vim motion
+" Plug 'easymotion/vim-easymotion'
 
 " prettier 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
@@ -144,6 +101,9 @@ Plug 'scrooloose/nerdtree'
 
 " Plugin for git status flags on nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Plugin for nerd commenter
+Plug 'preservim/nerdcommenter'
 
 " Plugin for fzf
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -169,7 +129,7 @@ Plug 'arcticicestudio/nord-vim'
 
 
 " Plugin for rainbox parenthesis 
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 
 " end vim-plug
 call plug#end()
@@ -178,10 +138,75 @@ call plug#end()
 " VIM Plug END
 " =============================
 
+"================================
+" MAPPING
+"================================
+" Disabling arrow key and live with it >.<
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+
+" Map Leader to ,
+let mapleader=','
+
+" Remap Esc to jk
+inoremap jk <ESC>
+
+" turn off search highlight
+nnoremap <Leader><space> :nohlsearch<CR>
+
+" Save file with leader key
+noremap <Leader>w :w<CR>
+
+" Save and exit with leader
+noremap <Leader>e :wq<CR>
+
+" exit 
+noremap <Leader>q :q <CR>
+
+" force not saving
+noremap <Leader>q1 :q!<Cr>
+
+" Move between split faster
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Reload vim configuration
+map <Leader>rr :source ~/.config/nvim/init.vim<CR>
+
+" Use Prettier
+map <Leader>p :PrettierAsync<CR>
+
+map <Leader>ss :Startify<CR>
+
+"nerdtree config
+map <Leader>nn :NERDTreeToggle<CR>
+
+" fzf config
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+
+" GIT FUGNITIVE
+noremap <Leader>gs :G<CR>
+
+" ===============================
+" MAPPING END
+" ===============================
 
 " ==============================
 " CUSTOM CONFIGURATION
 " ==============================
+
+" rainbow bracket
+let g:rainbow_active=1
 
 " i3 config 
 aug i3config_ft_detection
@@ -194,12 +219,6 @@ aug end
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" Reload vim configuration
-map <Leader>rr :source ~/.config/nvim/init.vim<CR>
-
-" Use Prettier
-map <Leader>p :PrettierAsync<CR>
 
 " Support true color
 if exists('+termguicolors')
@@ -260,17 +279,9 @@ let g:lightline#bufferline#show_number = 0
 " vim startify setup
 "let g:startify_custom_header =
 "              \ startify#pad(split(system('toilet ">_ Gasacchi"') ,'\n'))
-map <Leader>ss :Startify<CR>
-
-"nerdtree config
-map <Leader>nn :NERDTreeToggle<CR>
 
 " ElmCast config
 let g:elm_setup_keybindings = 0
-
-" fzf config
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
 
 " Coc Config
 " Some servers have issues with backup files, see #649

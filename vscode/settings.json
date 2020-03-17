@@ -1,0 +1,198 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.minimap.enabled": true,
+  "breadcrumbs.enabled": true,
+  "editor.renderWhitespace": "all",
+  "window.menuBarVisibility": "toggle",
+  "workbench.statusBar.visible": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Gruvbox Material Dark",
+  "editor.lineNumbers": "relative",
+  // editor font
+  "editor.fontFamily": "Fira Code iScript",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  // gruvbox material theme 
+  "gruvboxMaterial.italicKeywords": true,
+  // vim related settings
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.autoindent": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.showcmd": true,
+  "vim.leader": ",",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        ":w"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        ":q"
+      ]
+    },
+    // Fila and Command Open
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "F"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
+    },
+    // Split Navigation
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "commands": [
+        ":sp"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "v"
+      ],
+      "commands": [
+        ":vsp"
+      ]
+    },
+    // Tab Navigation
+    {
+      "before": [
+        "<leader>",
+        "t",
+        "t"
+      ],
+      "commands": [
+        ":tabnew"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "t",
+        "n"
+      ],
+      "commands": [
+        ":tabn"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "t",
+        "p"
+      ],
+      "commands": [
+        ":tabp"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "t",
+        "o"
+      ],
+      "commands": [
+        ":tabo"
+      ]
+    },
+    // {
+    // "before": ["<C-h>"],
+    // "commands": ["<C-w>","h"]
+    // },
+    // {
+    // "before": ["<C-l>"],
+    // "commands": ["<C-w>","l"]
+    // },
+    // {
+    // "before": ["<C-j>"],
+    // "commands": ["<C-w>","j"]
+    // },
+    // {
+    // "before": ["<C-k>"],
+    // "commands": ["<C-w>","k"]
+    // },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "editor.action.formatDocument",
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+  ]
+}
