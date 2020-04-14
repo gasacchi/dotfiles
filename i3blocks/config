@@ -9,7 +9,7 @@ color=#35BF5C
 
 [youtube]
 command=~/.config/i3blocks/blocklets/youtube
-interval=60
+interval=3600
 label= 
 color=#fb4934
 

@@ -1,19 +1,21 @@
 {
   "workbench.startupEditor": "newUntitledFile",
   "editor.minimap.enabled": true,
+  "editor.tabSize": 2,
   "breadcrumbs.enabled": true,
-  "editor.renderWhitespace": "all",
+  // "editor.renderWhitespace": "all",
   "window.menuBarVisibility": "toggle",
   "workbench.statusBar.visible": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Gruvbox Material Dark",
   "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  //prettier
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
   // editor font
   "editor.fontFamily": "Fira Code iScript",
   "editor.fontLigatures": true,
-  "editor.fontSize": 12,
-  // gruvbox material theme 
-  "gruvboxMaterial.italicKeywords": true,
+  "editor.fontSize": 13,
   // vim related settings
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
@@ -36,6 +38,15 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "commands": [
+        "docthis.documentThis"
+      ]
+    },
     {
       "before": [
         "<leader>",
@@ -175,7 +186,7 @@
       "commands": [
         "editor.action.formatDocument",
       ]
-    }
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -194,5 +205,22 @@
         "editor.action.outdentLines"
       ]
     },
-  ]
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+  },
+  "workbench.colorTheme": "Dracula",
+  "files.associations": {
+    "*.chan": "plaintext"
+  }
 }
