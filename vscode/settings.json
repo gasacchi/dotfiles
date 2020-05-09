@@ -1,4 +1,6 @@
 {
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontSize": 11,
   "workbench.startupEditor": "newUntitledFile",
   "editor.minimap.enabled": true,
   "editor.tabSize": 2,
@@ -6,7 +8,7 @@
   // "editor.renderWhitespace": "all",
   "window.menuBarVisibility": "toggle",
   "workbench.statusBar.visible": true,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
   //prettier

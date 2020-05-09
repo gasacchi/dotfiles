@@ -346,7 +346,7 @@ set $darkgray #1d2021
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
+	i3bar_command i3bar -t
   status_command i3blocks -c ~/.config/i3blocks/config
 	position top
   separator_symbol " "
@@ -358,16 +358,16 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+strip_workspace_numbers yes
 
  colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    background #282A36d9
+    statusline #F8F8F2d9
+    separator  #44475Ad9
 
     focused_workspace  #44475A #44475A #F8F8F2
     active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
+    inactive_workspace #282A36d9 #282A36d9 #BFBFBFd9
     urgent_workspace   #FF5555 #FF5555 #F8F8F2
     binding_mode       #FF5555 #FF5555 #F8F8F2
   }
@@ -378,13 +378,13 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #6272A4 #6272A4d9 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-client.background       #F8F8F2
+client.background       #F8F8F2d9
 
 #############################
 ### settings for i3-gaps: ###
