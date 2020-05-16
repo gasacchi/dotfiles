@@ -13,6 +13,9 @@ Plug 'mhinz/vim-startify'
 " Icon 
 Plug 'ryanoasis/vim-devicons'
 
+" Hex Color
+Plug 'lilydjwg/colorizer'
+
 " Reason ML Syntax
 Plug 'reasonml-editor/vim-reason-plus'
 
@@ -37,9 +40,6 @@ Plug 'cespare/vim-toml'
 " Surrounding text
 Plug 'tpope/vim-surround'
 
-" Repeat Vim 
-" Plug 'tpope/vim-repeat'
-
 " prettier 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
 
@@ -52,15 +52,9 @@ Plug 'scrooloose/nerdtree'
 " Plugin for git status flags on nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Plugin for nerd commenter
-Plug 'preservim/nerdcommenter'
-
 " Plugin for fzf
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-
-" Plugin for auto align
-Plug 'junegunn/vim-easy-align'
 
 " Plug for auto pair
 Plug 'jiangmiao/auto-pairs'
