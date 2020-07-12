@@ -1,7 +1,7 @@
 " enable lightline
 set laststatus=2
 let g:lightline = {
-\   'colorscheme':'dracula',
+\   'colorscheme':'gruvbox',
 \   'active': {
 \     'left':[[ 'mode', 'paste' ],
 \             [ 'gitbranch', 'readonly', 'filename', 'modified' ]]
@@ -44,5 +44,4 @@ let g:lightline#bufferline#show_number = 0
 " vim startify setup
 "let g:startify_custom_header =
 "              \ startify#pad(split(system('toilet ">_ Gasacchi"') ,'\n'))
-
 

@@ -42,21 +42,6 @@ nmap <C-l> <C-w>l
 " Reload vim configuration
 map <Leader>rr :source ~/.config/nvim/init.vim<CR>
 
-" Use Prettier
-map <Leader>p :PrettierAsync<CR>
-
-map <Leader>ss :Startify<CR>
-
-"nerdtree config
-map <Leader>nn :NERDTreeToggle<CR>
-
-" fzf config
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
-
-" GIT FUGNITIVE
-noremap <Leader>gs :G<CR>
-
 " ===============================
 " MAPPING END
 " ===============================

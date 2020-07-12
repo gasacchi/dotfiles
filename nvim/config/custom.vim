@@ -1,5 +1,5 @@
 " ==============================
-" CUSTOM CONFIGURATION
+" CUSTOM CONFIGURATION AND MAPPING
 " ==============================
 
 " rainbow bracket
@@ -18,8 +18,18 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+
 " theme
-colorscheme dracula
+colorscheme gruvbox
 
 " Transparent
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+
+map <Leader>ss :Startify<CR>
+
+" fzf config
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+
+" GIT FUGNITIVE
+noremap <Leader>gs :G<CR>
