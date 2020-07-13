@@ -46,6 +46,12 @@ set ruler
 set number
 set relativenumber
 
+" indent
+set list
+set listchars=eol:¬,space:·
+
+" Jump File Faster
+set path+=**
 " ==============================
 " Vim basic config END
 " ==============================

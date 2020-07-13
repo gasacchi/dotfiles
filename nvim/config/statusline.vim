@@ -42,6 +42,6 @@ let g:lightline#bufferline#shorten_path = 1
 let g:lightline#bufferline#show_number = 0
 
 " vim startify setup
-"let g:startify_custom_header =
-"              \ startify#pad(split(system('toilet ">_ Gasacchi"') ,'\n'))
+let g:startify_custom_header =
+              \ startify#pad(split(system('toilet "Gasacchi"') ,'\n'))
 

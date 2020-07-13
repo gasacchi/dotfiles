@@ -2,6 +2,20 @@
 " CUSTOM CONFIGURATION AND MAPPING
 " ==============================
 
+" Indent
+let g:indentLine_setColors = 0
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
+
+" Highlight Coc
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Prettier Coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Coc Format File
+nmap <silent> <Leader>f :call CocAction('format')<CR>
+
 " rainbow bracket
 let g:rainbow_active=1
 
@@ -18,8 +32,8 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-
 " theme
+let g:gruvbox_contrast_dark='dark'
 colorscheme gruvbox
 
 " Transparent
@@ -28,7 +42,7 @@ colorscheme gruvbox
 map <Leader>ss :Startify<CR>
 
 " fzf config
-nmap <Leader>f :GFiles<CR>
+nmap <Leader>gf :GFiles<CR>
 nmap <Leader>F :Files<CR>
 
 " GIT FUGNITIVE

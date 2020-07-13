@@ -40,7 +40,10 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 " Reload vim configuration
-map <Leader>rr :source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>rv :source $MYVIMRC<CR>
+
+" edit vim config faster
+nnoremap <Leader>cv :e $MYVIMRC <CR>
 
 " ===============================
 " MAPPING END
