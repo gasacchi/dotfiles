@@ -3,7 +3,6 @@
 # =======================================================================
 
 
-
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -34,8 +33,7 @@ font pango: OpenDyslexic Nerd Font 7
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec alacritty --config-file ~/.config/alacritty/alacritty.yml
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty --config-file ~/.config/alacritty/alacritty.yml
 
 
 # kill focused window
@@ -53,7 +51,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
+bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
@@ -65,13 +63,13 @@ bindsym $mod+Ctrl+m exec kitty -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec kitty -e 'bmenu'
+bindsym $mod+Ctrl+b exec alacritty -e 'bmenu'
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec kitty -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+F5 exec alacritty -e 'mocp'
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -190,7 +188,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-assign [class="firefoxdeveloperedition"] $ws2
+assign [class="Chromium"] $ws2
 assign [class="Pcmanfm"] $ws3
 
 # assign [class="Thunderbird"] $ws1
@@ -283,7 +281,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -330,25 +328,22 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 #######
-#THEME#
+#THEME Gruvbox Material#
 #######
 
 # set primary gruvbox colorscheme colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+set $bg #212121BF
+set $white #ffffff
+set $red #900000
+set $gray #333333d9
+set $darkgray #222222
+set $lightgrey #888888
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar -t
+  i3bar_command i3bar -t
   status_command i3blocks -c ~/.config/i3blocks/config
-	position top
+  position top
   separator_symbol " "
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -357,34 +352,30 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-strip_workspace_numbers yes
+  strip_workspace_numbers yes
 
  colors {
-    background #282A36d9
-    statusline #F8F8F2d9
-    separator  #44475Ad9
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36d9 #282A36d9 #BFBFBFd9
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $white
+        # workspaces section            
+        #                    border  backgr. text
+        active_workspace     $grey $darkgray $white
+        inactive_workspace   $grey $darkgray $lightgrey
+        focused_workspace    #4C7899 #285577 $white
+        urgent_workspace     $red $red $bg
+        binding_mode         #2F343A $red $white
   }
 }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-# Theme colors
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4d9 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
-client.background       #F8F8F2d9
+client.focused          #a9b665 #a9b665 #32302f #a9b665   #a9b665
+client.unfocused        #32302f #32302f #dfbf8e #32302f   #32302f
+client.focused_inactive #32302f #32302f #dfbf8e #32302f   #32302f
 
 #############################
 ### settings for i3-gaps: ###

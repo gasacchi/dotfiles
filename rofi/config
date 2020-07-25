@@ -1,2 +1,2 @@
-rofi.theme ~/.config/rofi/dracula.rasi
-rofi.theme: /usr/share/rofi/themes/dracula.rasi
+rofi.theme ~/.config/rofi/gruvbox.rasi
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark-hard.rasi
